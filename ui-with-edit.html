@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>UI grid demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>-->
+    <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+
+    <link rel="styleSheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/4.0.2/ui-grid.css"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.16/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-grid/4.0.2/ui-grid.min.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.min.js"></script>-->
+    <style>
+        .myGrid{
+            width:600px;
+            height:300px;
+        }
+    </style>
+</head>
+<body ng-app="gridApp" ng-controller="gridController">
+
+<div class="myGrid" ui-grid="gridoptions" ui-grid-edit>
+
+</div>
+
+<script>
+    var app = angular.module('gridApp',['ui.grid','ui.grid.edit']);
+    app.controller('gridController', function($scope){
+        $scope.gridoptions= {};
+        $scope.customers = [{fname:'sashi', lname:'kodi', phone:4085060109, city:'san ramon'},
+            {fname:'kiran', lname:'donthineni', phone:4084433535, city:'cupertino'},
+            {fname:'leela', lname:'karunanti', phone:4087545625, city:'pleasanton'}
+        ];
+        $scope.gridoptions.data = $scope.customers;
+        $scope.gridoptions.enableGridMenu = true;
+        $scope.gridoptions.columnDefs =[{name:'First Name', field: 'fname'},{name: 'Last Name', field:'lname'},
+            {name:'Contact No', field:'phone'}, {name:'Lives in City', field:'city'}];
+        $scope.gridoptions.enableFiltering = true;
+        $scope.gridoptions.showGridFooter = true;
+    })
+</script>
+</body>
+
+</html>
